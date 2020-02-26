@@ -118,19 +118,4 @@ public class PetController {
 		this.clinicService.deletePet(petId);
 		return "redirect:/owners/{ownerId}";
 	}
-
-	@GetMapping(value="/pets/{petId}/delete")
-	public String deletePet(Pet pet, BindingResult result, ModelMap model){
-		if(result.hasErrors()){
-			model.put("pet", pet);
-			return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
-		}else{
-			this.clinicService.deletePet(pet);
-			return "redirect:/owners/{ownerId}";
-
-		}
-
-	}
-
-
 }

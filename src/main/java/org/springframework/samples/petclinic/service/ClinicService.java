@@ -107,8 +107,4 @@ public class ClinicService {
 		petRepository.delete(petId);
 	}
 
-	public void deletePet(Pet pet) throws DataAccessException{
-		petRepository.delete(pet);	
-	}   
-
 }
