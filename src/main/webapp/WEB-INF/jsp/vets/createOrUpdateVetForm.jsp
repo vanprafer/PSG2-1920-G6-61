@@ -10,12 +10,12 @@
     <h2>
         <c:if test="${vet['new']}">New </c:if> Vet
     </h2>
-    <form:form modelAttribute="vet" class="form-horizontal" id="add-owner-form">
+    <form:form modelAttribute="vet" class="form-horizontal" id="add-vet-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="First Name" name="firstName"/>
             <petclinic:inputField label="Last Name" name="lastName"/>
 			<div class="control-group">
-            	<petclinic:selectField label="Specialties" name="specialties" size="3" names="${specialties}"/>
+            	<petclinic:selectField label="Specialty" name="specialties" size="3" names="${specialties}"/>
             </div>
         </div>
         <div class="form-group">

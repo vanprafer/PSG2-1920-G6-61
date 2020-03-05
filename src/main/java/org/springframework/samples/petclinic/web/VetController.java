@@ -93,7 +93,6 @@ public class VetController {
 			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-			System.out.println(result.getModel().get("_specialties"));
 			this.clinicService.saveVet(vet);
 			return "redirect:/vets" ;
 		}
