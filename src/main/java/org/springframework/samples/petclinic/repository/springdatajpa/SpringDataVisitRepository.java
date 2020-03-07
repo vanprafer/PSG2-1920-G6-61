@@ -18,6 +18,10 @@ package org.springframework.samples.petclinic.repository.springdatajpa;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.VisitRepository;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Spring Data JPA specialization of the {@link VisitRepository} interface
@@ -27,4 +31,9 @@ import org.springframework.samples.petclinic.repository.VisitRepository;
  */
 public interface SpringDataVisitRepository extends VisitRepository, Repository<Visit, Integer> {
 
+    @Override
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM Visit WHERE id = ?1")
+	void delete(int visitId) throws DataAccessException;
 }
