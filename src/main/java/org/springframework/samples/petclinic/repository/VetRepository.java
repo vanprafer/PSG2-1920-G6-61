@@ -54,7 +54,12 @@ public interface VetRepository {
 	 * @throws DataAccessException
 	 */
 	void save(Vet vet) throws DataAccessException;
-
-
-
+	
+	/**
+	 * 
+	 * @param id
+	 * @return Vet with that id
+	 * @throws DataAccessException
+	 */
+	Vet findVetById(int id) throws DataAccessException;
 }

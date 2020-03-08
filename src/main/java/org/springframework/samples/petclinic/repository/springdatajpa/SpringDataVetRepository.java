@@ -23,6 +23,7 @@ import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.VetRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Spring Data JPA specialization of the {@link VetRepository} interface
@@ -31,9 +32,14 @@ import org.springframework.samples.petclinic.repository.VetRepository;
  * @since 15.1.2013
  */
 public interface SpringDataVetRepository extends VetRepository, Repository<Vet, Integer> {
-
+	
 	
 	@Override
 	@Query("SELECT spec FROM Specialty spec ORDER BY spec.name")
 	List<Specialty> findSpecialityTypes() throws DataAccessException;
+
+	@Override
+	@Transactional
+	@Query("SELECT vet FROM Vet vet WHERE vet.id = ?1")
+	public Vet findVetById(int id) throws DataAccessException;
 }

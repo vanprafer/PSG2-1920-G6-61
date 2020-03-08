@@ -105,10 +105,6 @@ public class ClinicService {
 		return vetRepository.findSpecialityTypes();
 	}
 	
-	@Transactional
-	public void saveVet(Vet vet) throws DataAccessException {
-		vetRepository.save(vet);
-	}
 
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
@@ -120,6 +116,16 @@ public class ClinicService {
 			visitRepository.delete(v.getId());
 		}
 		petRepository.delete(petId);
+	}
+	
+	@Transactional(readOnly = true)
+	public Vet findVetById(int id) throws DataAccessException{
+		return vetRepository.findVetById(id);
+	}
+	
+	@Transactional
+	public void saveVet(Vet vet) throws DataAccessException{
+		vetRepository.save(vet);
 	}
 
 	public void deleteVisit(int visitId) throws DataAccessException{
