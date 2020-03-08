@@ -16,13 +16,23 @@
 package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Specialty;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collection;
 import java.util.Map;
+
+import javax.validation.Valid;
 
 /**
  * @author Juergen Hoeller
@@ -32,12 +42,19 @@ import java.util.Map;
  */
 @Controller
 public class VetController {
+	
+	private static final String VIEWS_VET_CREATE_OR_UPDATE_FORM = "vets/createOrUpdateVetForm";
 
 	private final ClinicService clinicService;
 
 	@Autowired
 	public VetController(ClinicService clinicService) {
 		this.clinicService = clinicService;
+	}
+	
+	@ModelAttribute("specialties")
+	public Collection<Specialty> populateSpecialitiesTypes() {
+		return this.clinicService.findSpecialities();
 	}
 
 	@GetMapping(value = { "/vets" })
@@ -59,6 +76,26 @@ public class VetController {
 		Vets vets = new Vets();
 		vets.getVetList().addAll(this.clinicService.findVets());
 		return vets;
+	}
+	
+	@GetMapping(value = "/vets/{vetId}/edit")
+	public String initUpdateOwnerForm(@PathVariable("vetId") int vetId, Model model) {
+		Vet vet = this.clinicService.findVetById(vetId);
+		model.addAttribute(vet);
+		return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+	}
+	
+	@PostMapping(value = "/vets/{vetId}/edit")
+	public String processUpdateOwnerForm(@Valid Vet vet, BindingResult result,
+			@PathVariable("vetId") int vetId) {
+		if (result.hasErrors()) {
+			return VIEWS_VET_CREATE_OR_UPDATE_FORM;
+		}
+		else {
+			vet.setId(vetId);
+			this.clinicService.saveVet(vet);
+			return "redirect:/vets";
+		}
 	}
 
 }
