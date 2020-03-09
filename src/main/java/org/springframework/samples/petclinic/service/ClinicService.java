@@ -132,4 +132,9 @@ public class ClinicService {
 		visitRepository.delete(visitId);
 	}
 
+	public void deleteOwner(int ownerId) throws DataAccessException{
+		ownerRepository.delete(ownerId);
+		
+	}
+
 }

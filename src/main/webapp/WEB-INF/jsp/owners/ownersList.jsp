@@ -41,6 +41,11 @@
                         <c:out value="${pet.name} "/>
                     </c:forEach>
                 </td>
+                <td>
+                    <a class="btn btn-default" href='<spring:url value="/owners/delete/${owner.id}" htmlEscape="true"/>'onclick="return confirm('Are you sure?')">Delete Owner</a>
+                
+				</td>
+
             </tr>
         </c:forEach>
         </tbody>
