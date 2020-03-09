@@ -89,7 +89,7 @@ public class VisitController {
 		return "visitList";
 	}
 
-	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/visits/delete")
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
     public String deleteVisit(@PathVariable("visitId") int visitId){
         this.clinicService.deleteVisit(visitId);
         return "redirect:/owners/{ownerId}";
