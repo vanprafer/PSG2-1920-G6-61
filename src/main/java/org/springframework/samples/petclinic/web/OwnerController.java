@@ -16,15 +16,18 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -135,5 +138,15 @@ public class OwnerController {
 		mav.addObject(this.clinicService.findOwnerById(ownerId));
 		return mav;
 	}
-
+	@GetMapping(value="/owners/delete/{ownerId}")
+	public String deleteOwner(@PathVariable("ownerId") int ownerId, ModelMap model){
+		Owner owner = this.clinicService.findOwnerById(ownerId);
+		List<Pet> pets=owner.getPets();
+		for (int i=0; i<pets.size(); i++) {
+			 this.clinicService.deletePet(pets.get(i).getId());
+		}
+		
+		this.clinicService.deleteOwner(ownerId);
+		return "redirect:/owners?lastName=";
+	}
 }
