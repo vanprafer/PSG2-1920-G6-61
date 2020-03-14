@@ -136,5 +136,9 @@ public class ClinicService {
 		ownerRepository.delete(ownerId);
 		
 	}
+	
+	public void deleteVet(int vetId) throws DataAccessException{
+		vetRepository.delete(vetId);
+	}
 
 }

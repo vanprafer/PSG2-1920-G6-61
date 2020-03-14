@@ -37,6 +37,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 /**
  * @author Juergen Hoeller
@@ -120,6 +121,14 @@ public class VetController {
 			return "redirect:/vets";
 		}
 	}
+	
+	@GetMapping(path="/vets/delete/{vetId}")
+	public String borrarVet(@PathVariable("vetId") int vetId){
+		String view="redirect:/vets";
+		clinicService.deleteVet(vetId);
+		return view;
+	}
 
+	
     
 }
