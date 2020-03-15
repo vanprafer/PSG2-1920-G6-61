@@ -20,10 +20,10 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Birth Date</th>
-                <th>Type</th>
-                <th>Owner</th>
+                <th>Nombre</th>
+                <th>Fecha Nacimiento</th>
+                <th>Tipo</th>
+                <th>Dueño</th>
             </tr>
             </thead>
             <tr>
