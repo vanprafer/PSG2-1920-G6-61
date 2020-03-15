@@ -22,7 +22,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${vet['new']}">
-                        <button class="btn btn-default" type="submit">A�adir Veterinario</button>
+                        <button class="btn btn-default" type="submit">Agregar Veterinario</button>
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit">Actualizar Veterinario</button>
