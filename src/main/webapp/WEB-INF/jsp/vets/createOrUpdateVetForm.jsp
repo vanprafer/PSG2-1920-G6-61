@@ -6,26 +6,27 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="vets">
+<petclinic:layout pageName="Vets">
     <h2>
-        <c:if test="${vet['new']}">New </c:if> Vet
+        <c:if test="${vet['new']}">Nuevo </c:if> Veterinario
     </h2>
     <form:form modelAttribute="vet" class="form-horizontal" id="add-vet-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
+            <petclinic:inputField label="Nombre" name="firstName"/>
+            <petclinic:inputField label="Apellidos" name="lastName"/>
 			<div class="control-group">
-            	<petclinic:selectField label="Specialty" name="specialties" size="3" names="${specialties}"/>
+            	<petclinic:selectField label="Especialidad" name="specialties" size="3" names="${specialties}"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${vet['new']}">
-                        <button class="btn btn-default" type="submit">Add Vet</button>
+                        <button class="btn btn-default" type="submit">Añadir Veterinario</button>
+                        <button class="btn btn-default" type="submit">Borrar Veterinario</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Vet</button>
+                        <button class="btn btn-default" type="submit">Actualizar Veterinario</button>
                     </c:otherwise>
                 </c:choose>
             </div>

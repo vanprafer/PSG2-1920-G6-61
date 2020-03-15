@@ -62,4 +62,8 @@ public interface VetRepository {
 	 * @throws DataAccessException
 	 */
 	Vet findVetById(int id) throws DataAccessException;
+	
+	void delete(int vetId) throws DataAccessException;
 }
+
+

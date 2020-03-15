@@ -151,5 +151,9 @@ public class ClinicService {
 	public void savePetHotelBooking(PetHotel petHotel) throws DataAccessException {
 		petHotelRepository.save(petHotel);
 	}
+	
+	public void deleteVet(int vetId) throws DataAccessException{
+		vetRepository.delete(vetId);
+	}
 
 }
