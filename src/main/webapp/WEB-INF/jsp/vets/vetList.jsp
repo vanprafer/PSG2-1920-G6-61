@@ -7,13 +7,13 @@
 
 
 <petclinic:layout pageName="vets">
-    <h2>Veterinarians</h2>
+    <h2>Veterinarios</h2>
 
     <table id="vetsTable" class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Specialties</th>
+            <th>Nombre</th>
+            <th>Especialidades</th>
             <th></th>
         </tr>
         </thead>
@@ -33,8 +33,15 @@
                     <spring:url value="/vets/{vetId}/edit" var="editUrl">
                             <spring:param name="vetId" value="${vet.id}"/>
                     </spring:url>
-                    <a class="btn btn-default" href="${fn:escapeXml(editUrl)}">Edit vet</a>
+                    <a class="btn btn-default" href="${fn:escapeXml(editUrl)}">Editar Veterinario</a>
+                    
                  </td>
+                 <td>
+                 <spring:url value="/vets/delete/{vetId}" var="deleteVetUrl">
+                            <spring:param name="vetId" value="${vet.id}"/>
+                    </spring:url>
+                    	<a class="btn btn-default" href="${fn:escapeXml(deleteVetUrl)}">Borrar Veterinario</a>
+                 </td> 
             </tr>
         </c:forEach>
         </tbody>
@@ -43,11 +50,13 @@
     <table class="table-buttons">
         <tr>
             <td>
-                <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
+                <a href="<spring:url value="/vets.xml" htmlEscape="true" />">Ver como XML</a>
             </td>            
         </tr>
     </table>
     
     <br/>
-    <a class="btn btn-default" href='<spring:url value="/vets/new" htmlEscape="true"/>'>Add Veterinarian</a>
+    <a class="btn btn-default" href='<spring:url value="/vets/new" htmlEscape="true"/>'>Añadir Veterinario</a>
+    
+   
 </petclinic:layout>

@@ -160,4 +160,9 @@ public class ClinicService {
 		petHotelRepository.delete(petHotelId);
 		
 	}
+	
+	public void deleteVet(int vetId) throws DataAccessException{
+		vetRepository.delete(vetId);
+	}
+
 }
