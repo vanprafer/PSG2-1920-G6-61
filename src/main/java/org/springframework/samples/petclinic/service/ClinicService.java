@@ -146,10 +146,18 @@ public class ClinicService {
 	public Collection<PetHotel> findPetHotelById(int id) throws DataAccessException {
 		return petHotelRepository.findByPetId(id);
 	}
+	@Transactional(readOnly = true)
+	public PetHotel findPetHotelByHotelId(int id) throws DataAccessException {
+		return petHotelRepository.findById(id);
+	}
 	
 	@Transactional
 	public void savePetHotelBooking(PetHotel petHotel) throws DataAccessException {
 		petHotelRepository.save(petHotel);
 	}
-
+	
+	public void deletePetHotelBooking(int petHotelId) throws DataAccessException{
+		petHotelRepository.delete(petHotelId);
+		
+	}
 }
