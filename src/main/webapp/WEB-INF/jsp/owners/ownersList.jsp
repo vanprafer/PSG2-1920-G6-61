@@ -16,6 +16,7 @@
             <th>Ciudades</th>
             <th style="width: 120px">Telefono</th>
             <th>Mascotas</th>
+            <th>Borrar dueño</th>
         </tr>
         </thead>
         <tbody>
