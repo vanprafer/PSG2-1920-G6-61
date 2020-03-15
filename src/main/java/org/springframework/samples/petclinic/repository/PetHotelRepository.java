@@ -10,5 +10,9 @@ public interface PetHotelRepository {
 	List<PetHotel> findByPetId(int id);
 	
 	void save(PetHotel petHotel) throws DataAccessException;
+	
+	void delete(int petHotelId) throws DataAccessException;
 
+	PetHotel findById(int id)throws DataAccessException;
+	
 }

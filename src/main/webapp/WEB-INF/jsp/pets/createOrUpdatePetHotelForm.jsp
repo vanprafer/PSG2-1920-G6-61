@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <petclinic:layout pageName="owners">
     <jsp:attribute name="customScript">
@@ -64,6 +64,14 @@
                         <td><petclinic:localDate date="${petHotel.start}" pattern="yyyy/MM/dd"/></td>
                         <td><petclinic:localDate date="${petHotel.finish}" pattern="yyyy/MM/dd"/></td>
                         <td><c:out value="${petHotel.description}"/></td>
+                        <td>
+                            <spring:url value="/owners/{ownerId}/pets/{petId}/petHotels/{petHotelId}/delete" var = "deletePetHotelURL">
+                            <spring:param name="petHotelId" value="${petHotel.id}"/>  
+                            <spring:param name="ownerId" value="${petHotel.pet.owner.id}"/>
+                            <spring:param name="petId" value="${petHotel.pet.id}"/> 
+                            </spring:url>
+                        <a href="${fn:escapeXml(deletePetHotelURL)}" onclick="return confirm('Are you sure?')" >Delete Booking</a>
+                        </td>
                     </tr>
                 </c:if>
             </c:forEach>
