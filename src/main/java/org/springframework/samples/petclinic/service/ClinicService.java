@@ -120,6 +120,10 @@ public class ClinicService {
 		for(Visit v : visits) {
 			visitRepository.delete(v.getId());
 		}
+		Collection<PetHotel> hotels = petHotelRepository.findByPetId(petId);
+		for(PetHotel ph : hotels){
+			petHotelRepository.delete(ph.getId());
+		}
 		petRepository.delete(petId);
 	}
 	
