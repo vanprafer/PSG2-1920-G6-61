@@ -14,7 +14,8 @@
         <tr>
             <th>Nombre</th>
             <th>Especialidades</th>
-            <th></th>
+            <th>Editar veterinario</th>
+            <th>Borrar veterinario</th>
         </tr>
         </thead>
         <tbody>
