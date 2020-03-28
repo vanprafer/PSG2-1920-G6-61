@@ -115,10 +115,6 @@ public class ClinicService {
 		return vetRepository.findSpecialityTypes();
 	}
 	
-	public void deleteVet(int vetId) throws DataAccessException{
-		vetRepository.delete(vetId);
-	}
-	
 
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);
@@ -155,15 +151,10 @@ public class ClinicService {
 		
 	}
 		
-	
-	
-	// PET HOTEL
-	
 	@Transactional(readOnly = true)
 	public Collection<PetHotel> findPetHotelById(int id) throws DataAccessException {
 		return petHotelRepository.findByPetId(id);
 	}
-	
 	@Transactional(readOnly = true)
 	public PetHotel findPetHotelByHotelId(int id) throws DataAccessException {
 		return petHotelRepository.findById(id);
@@ -178,29 +169,15 @@ public class ClinicService {
 		petHotelRepository.delete(petHotelId);
 		
 	}
+	
+	public void deleteVet(int vetId) throws DataAccessException{
+		vetRepository.delete(vetId);
+	}
 
-	
-	
-	// CAUSAS
-	
 	@Transactional(readOnly = true)
 	@Cacheable(value = "causes")
 	public Collection<Cause> findCauses() throws DataAccessException {
 		return causeRepository.findAll();
 	}
-	
-	@Transactional
-	public void saveCause(Cause cause) throws DataAccessException {
-		causeRepository.save(cause);
-	}
-	
-	public void deleteCause(int causeId) throws DataAccessException{
-		causeRepository.delete(causeId);
-	}
 
-	@Transactional(readOnly = true)
-	public Cause findCauseById(int id) throws DataAccessException {
-		return causeRepository.findCauseById(id);
-	}
-	
 }
