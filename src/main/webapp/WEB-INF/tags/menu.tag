@@ -25,12 +25,17 @@
 
                 <petclinic:menuItem active="${name eq 'owners'}" url="/owners/find" title="find owners">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <span>Buscar dueño</span>
+                    <span>Buscar dueï¿½o</span>
                 </petclinic:menuItem>
 
                 <petclinic:menuItem active="${name eq 'vets'}" url="/vets" title="veterinarians">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                     <span>Veterinario</span>
+                </petclinic:menuItem>
+
+                <petclinic:menuItem active="${name eq 'causes'}" url="/causes" title="causes">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span>Causa</span>
                 </petclinic:menuItem>
 
                 <petclinic:menuItem active="${name eq 'error'}" url="/oups"

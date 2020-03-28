@@ -6,29 +6,24 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-<petclinic:layout pageName="vets">
-    <h2>Veterinarios</h2>
+<petclinic:layout pageName="causes">
+    <h2>Causas</h2>
 
-    <table id="vetsTable" class="table table-striped">
+    <table id="causesTable" class="table table-striped">
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>Especialidades</th>
-            <th>Editar veterinario</th>
-            <th>Borrar veterinario</th>
+            <th>Budget Target</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${vets.vetList}" var="vet">
+        <c:forEach items="${causes.causeList}" var="causes">
             <tr>
                 <td>
-                    <c:out value="${vet.firstName} ${vet.lastName}"/>
+                    <c:out value="${causes.name}"/>
                 </td>
                 <td>
-                    <c:forEach var="specialty" items="${vet.specialties}">
-                        <c:out value="${specialty.name} "/>
-                    </c:forEach>
-                    <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
+                    <c:out value="${causes.budgetTarget}"/>
                 </td>
                 <td>
                     <spring:url value="/vets/{vetId}/edit" var="editUrl">
@@ -51,7 +46,7 @@
     <table class="table-buttons">
         <tr>
             <td>
-                <a href="<spring:url value="/vets.xml" htmlEscape="true" />">Ver como XML</a>
+                <a href="<spring:url value="/causes.xml" htmlEscape="true" />">Ver como XML</a>
             </td>            
         </tr>
     </table>

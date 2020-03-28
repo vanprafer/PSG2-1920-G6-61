@@ -20,6 +20,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Cause;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -27,6 +28,7 @@ import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.model.PetHotel;
+import org.springframework.samples.petclinic.repository.CauseRepository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
@@ -54,14 +56,17 @@ public class ClinicService {
 
 	private PetHotelRepository petHotelRepository;
 
+	private CauseRepository causeRepository;
+
 	@Autowired
 	public ClinicService(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository,
-			VisitRepository visitRepository, PetHotelRepository petHotelRepository) {
+			VisitRepository visitRepository, PetHotelRepository petHotelRepository, CauseRepository causeRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
 		this.petHotelRepository = petHotelRepository;
+		this.causeRepository = causeRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -167,6 +172,12 @@ public class ClinicService {
 	
 	public void deleteVet(int vetId) throws DataAccessException{
 		vetRepository.delete(vetId);
+	}
+
+	@Transactional(readOnly = true)
+	@Cacheable(value = "causes")
+	public Collection<Cause> findCauses() throws DataAccessException {
+		return causeRepository.findAll();
 	}
 
 }

@@ -51,3 +51,6 @@ INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
 INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
+
+INSERT INTO causes VALUES (1, 'Recogida de alimentos', 'Para alimentar a los perros', 200.0, 'Asociados', true, 1);
+INSERT INTO causes VALUES (2, 'Recogida de alimentos2', 'Para alimentar a los perros2', 100.0, 'Asociados2', true, 2);
