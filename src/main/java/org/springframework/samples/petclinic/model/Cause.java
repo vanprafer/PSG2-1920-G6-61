@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "causes")
@@ -14,7 +16,7 @@ public class Cause extends NamedEntity {
 	@NotEmpty
     private String description;
 
-    @Column(name = "budgetTarget")
+    @Column(name = "budget_target")
 	@NotEmpty
     private Double budgetTarget;
 
@@ -22,7 +24,7 @@ public class Cause extends NamedEntity {
 	@NotEmpty
 	private String organization;
 
-    @Column(name = "isOpen")
+    @Column(name = "is_open")
 	@NotNull
 	private Boolean isOpen;
 

@@ -6,7 +6,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="owners">
-    <h2>Dueños</h2>
+    <h2>Dueï¿½os</h2>
 
     <table id="ownersTable" class="table table-striped">
         <thead>
@@ -16,7 +16,7 @@
             <th>Ciudades</th>
             <th style="width: 120px">Telefono</th>
             <th>Mascotas</th>
-            <th>Borrar dueño</th>
+            <th>Borrar dueï¿½o</th>
         </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
                     </c:forEach>
                 </td>
                 <td>
-                    <a class="btn btn-default" href='<spring:url value="/owners/delete/${owner.id}" htmlEscape="true"/>'onclick="return confirm('Are you sure?')">Borrar dueño</a>
+                    <a class="btn btn-default" href='<spring:url value="/owners/delete/${owner.id}" htmlEscape="true"/>'onclick="return confirm('Are you sure?')">Borrar dueï¿½o</a>
                 
 				</td>
 
